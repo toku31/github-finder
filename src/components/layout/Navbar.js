@@ -2,15 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-// class Navbar extends Component {
-// const Navbar = (props) => {
 const Navbar = ({ icon, title }) => {
 
 // render() {
     return (
         <nav className="navbar bg-primary">
             <h1>
-                {/* <i className= {props.icon} /> {props.title} */}
                 <i className= {icon} /> {title}
             </h1>
             <ul>

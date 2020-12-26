@@ -2,11 +2,10 @@
 import React, { Fragment, useEffect, useContext } from 'react' // Component=>useEffect
 import Spinner from '../layout/Spinner'
 import Repos from '../repos/Repos';
-// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import GithubContext from '../../context/github/githubContext';
 
-const User = ({ match }) => {  // export class  user, loading, getUser, getUserRepos, repos,
+const User = ({ match }) => { 
     const githubContext = useContext(GithubContext);
 
     const { getUser, loading, user, repos, getUserRepos } = githubContext;
@@ -17,20 +16,6 @@ const User = ({ match }) => {  // export class  user, loading, getUser, getUserR
         // eslint-disable-next-line
     }, []);
     
-    // componentDidMount() { // User extends Component {
-    //     this.props.getUser(match.params.login);  // this.props.match.params.login
-    //     this.props.getUserRepos(match.params.login);
-    // }
-
-    // static propTypes = {
-    //     loading: PropTypes.bool,
-    //     user: PropTypes.object.isRequired,
-    //     repos: PropTypes.array.isRequired,
-    //     getUser: PropTypes.func.isRequired,
-    //     getUserRepos: PropTypes.func.isRequired,
-    // };
-
-    // render() {
         const {
             name,
             company,
@@ -45,13 +30,10 @@ const User = ({ match }) => {  // export class  user, loading, getUser, getUserR
             public_repos,
             public_gists,
             hireable
-        } = user;  // this.props.user
-
-        // const { loading, repos } = this.props
+        } = user;  
 
         if(loading) return<Spinner />;
 
-        // return <div>{name} </div>
         return (
             <Fragment>
             <Link to='/' className='btn btn-Light'>
@@ -104,15 +86,6 @@ const User = ({ match }) => {  // export class  user, loading, getUser, getUserR
             <Repos repos={repos} />
         </Fragment>
         );
-    // }
 }
-
-User.propTypes = {
-    // loading: PropTypes.bool,
-    // user: PropTypes.object.isRequired,
-    // repos: PropTypes.array.isRequired,
-    // getUser: PropTypes.func.isRequired,
-    // getUserRepos: PropTypes.func.isRequired,
-};
 
 export default User

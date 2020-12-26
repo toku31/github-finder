@@ -22,11 +22,11 @@ const GithubState = props => {
 
   // Search Github users
   const searchUsers = async text => {
-    setLoading(); //this.setState({ loading:true })
+    setLoading(); 
 
     const res = await axios.get(`https:api.github.com/search/users?q=${text}&
     client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    // setLoading(false);
+
     dispatch({
         type: SEARCH_USERS,
         payload: res.data.items
@@ -35,7 +35,7 @@ const GithubState = props => {
 
     // Get User
     const getUser = async username => {
-    setLoading(); // this.setState({ loading:true })
+    setLoading(); 
 
     const res = await axios.get(`https:api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
  
@@ -47,13 +47,11 @@ const GithubState = props => {
 
     // Get Repos
   const getUserRepos = async username => {
-    setLoading(); // this.setState({ loading:true });
+    setLoading(); 
 
     const res = await axios.get(`https:api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
 
-    // setRepos(res.data);// this.setState({ repos: res.data, loading: false }); // APIからデータを取得
-    // setLoading(false);
-    dispatch({
+      dispatch({
         type: GET_REPOS,
         payload: res.data
     });
